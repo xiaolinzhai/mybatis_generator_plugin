@@ -77,6 +77,11 @@ public class ServicePlugin  extends PluginAdapter {
         implClass.addImportedType("javax.annotation.Resource");
         implClass.setVisibility(JavaVisibility.PUBLIC);
 
+        //加 Repository 注解
+        implClass.addAnnotation("@Repository");
+        FullyQualifiedJavaType repository = new FullyQualifiedJavaType("org.springframework.stereotype.Repository");
+        implClass.addImportedType(repository);
+
         Field mapperField = new Field();
         String shortName = interfaze.getType().getShortName();
         mapperField.setType(interfaze.getType());
